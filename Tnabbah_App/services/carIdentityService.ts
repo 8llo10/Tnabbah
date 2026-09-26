@@ -2,7 +2,6 @@ import { obdCoreService } from "./obdCoreService";
 
 let cachedIdentity: any = null;
 
-
 function simpleHash(text: string) {
   let hash = 0;
 
@@ -137,3 +136,4 @@ export const carIdentityService = {
     return cachedIdentity;
   },
 };
+
