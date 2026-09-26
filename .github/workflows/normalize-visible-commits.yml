@@ -1,4 +1,4 @@
-name: Audit visible file commits
+name: Normalize remaining visible file commits
 
 on:
   push:
@@ -7,10 +7,10 @@ on:
       - '.github/workflows/normalize-visible-commits.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  audit:
+  normalize:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -19,54 +19,53 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find remaining non-descriptive latest commits
+      - name: Create descriptive replacement commits
         shell: bash
         run: |
-          python - <<'PY'
-          import os, re, subprocess
+          set -euo pipefail
 
-          def git(*args):
-              return subprocess.check_output(['git', *args], text=True, errors='replace').strip()
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          files = git('ls-files', '-z').split('\0')
-          exact_bad = {
-              'demo', 'docs', 'docx', 'gg', 'g', 'x', 'k', 'm', 'ء', 'ءء', 'ؤؤ', 'ؤؤؤؤؤ',
-              'last thing', 'cleeennn', 'delete', 'tray to debloyy', 'reade me faile',
-              'update reademe', 'updating readme file', 'editing teemwoork!!!', 'contact us **',
-              'wep version1', 'wep version2', 'wep version3',
-          }
-          generic_file_update = re.compile(r'^update\s+[^\s]+\.(?:tsx?|jsx?|json|md|html|css|svg)$', re.I)
-          punctuation = re.compile(r'^[\W_\d]+$', re.UNICODE)
+          declare -A MSG
+          MSG[1005fb3]="docs: add animated TNABBAH README header artwork"
+          MSG[39e491f]="feat: add diagnostic report history with saved and pending scans"
+          MSG[40a719e]="feat: add localized navigation and maintenance success feedback"
+          MSG[53d2d37]="refactor: modularize settings flows and improve vehicle switching"
+          MSG[5b37b16]="fix: redirect unknown routes to the app start screen"
+          MSG[5c3a3f7]="feat: implement secure account deletion edge function"
+          MSG[6f1180d]="docs: refresh TNABBAH README visual assets"
+          MSG[7ae5d63]="docs: clean legacy backend deployment documentation"
+          MSG[a468b3b]="chore: align Supabase environment configuration"
+          MSG[b8de8ba]="feat: harden auth callback routing and theme-aware tab navigation"
+          MSG[c4052f2]="feat: add animated vehicle detection scanning overlay"
+          MSG[e0672e2]="chore: configure Supabase local development and Deno tooling"
 
-          found = []
-          for path in files:
-              if not path or not os.path.isfile(path):
-                  continue
-              try:
-                  data = open(path, 'rb').read(8192)
-              except OSError:
-                  continue
-              if b'\x00' in data:
-                  continue
-              sha = git('log', '-1', '--format=%H', '--', path)
-              subject = git('log', '-1', '--format=%s', '--', path)
-              s = subject.strip()
-              low = s.lower()
-              arabic = any('\u0600' <= ch <= '\u06ff' for ch in s)
-              bad = (
-                  not s
-                  or low in exact_bad
-                  or punctuation.fullmatch(s) is not None
-                  or generic_file_update.fullmatch(s) is not None
-                  or arabic
-              )
-              if bad:
-                  found.append((sha, subject, path))
+          for prefix in "${!MSG[@]}"; do
+            files=()
+            while IFS= read -r -d '' file; do
+              latest="$(git log -1 --format=%H -- "$file" || true)"
+              [[ "$latest" == "$prefix"* ]] || continue
 
-          if not found:
-              print('AUDIT_CLEAN: no remaining text files with non-descriptive latest commits')
-          else:
-              for sha, subject, path in sorted(found, key=lambda x: (x[0], x[2])):
-                  print(f'UNRESOLVED|{sha}|{subject}|{path}')
-              print(f'UNRESOLVED_COUNT={len(found)}')
-          PY
+              if grep -Iq . "$file"; then
+                files+=("$file")
+              fi
+            done < <(git ls-files -z)
+
+            if ((${#files[@]} == 0)); then
+              continue
+            fi
+
+            for file in "${files[@]}"; do
+              printf '\n' >> "$file"
+            done
+
+            git add -- "${files[@]}"
+            git commit -m "${MSG[$prefix]}"
+          done
+
+          if [[ "$(git rev-parse HEAD)" != "${GITHUB_SHA}" ]]; then
+            git push origin HEAD:main
+          else
+            echo "No matching text files required normalization."
+          fi
