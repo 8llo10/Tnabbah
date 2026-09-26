@@ -19,3 +19,4 @@ drop policy if exists "public insert scores" on public.tnabbah_rush_scores;
 create policy "public insert scores"
 on public.tnabbah_rush_scores for insert
 with check (char_length(name) between 1 and 16 and score >= 0);
+

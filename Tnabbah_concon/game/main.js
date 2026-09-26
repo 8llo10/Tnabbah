@@ -78,3 +78,4 @@ async function loadBoard(){
 
 $("startBtn").onclick=startGame; $("againBtn").onclick=()=>show("start"); $("howBtn").onclick=()=>show("how"); $("backStart").onclick=()=>show("start");
 loadBoard();
+
