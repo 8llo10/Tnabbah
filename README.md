@@ -4,7 +4,7 @@
 
 <br />
 
-<img src="./assets/logo.png" width="170" alt="TNABBAH Logo"/>
+<!-- <img src="./assets/logo.png" width="170" alt="TNABBAH Logo"/> -->
 
 # TNABBAH — تنبَّه
 
