@@ -1,0 +1,111 @@
+name: Normalize visible file commits
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/normalize-visible-commits.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create descriptive replacement commits for text files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          declare -A MSG
+          MSG[787819c]="feat: add no-vehicle wallet state and web beta messaging"
+          MSG[0d7523e]="fix: persist Supabase sessions and detect web auth callbacks"
+          MSG[73025ec]="fix: prevent native image prefetch on web"
+          MSG[5e54e32]="fix: make local notifications web-safe"
+          MSG[f082c71]="fix: isolate native diagnostics APIs from web builds"
+          MSG[c5fc134]="fix: correct web-safe keyboard handling on verify email"
+          MSG[ed465bc]="fix: add web-safe login and email verification navigation"
+          MSG[17bc397]="fix: support email verification navigation on web registration"
+          MSG[ca911de]="fix: make password recovery and email verification keyboard handling web-safe"
+          MSG[679797e]="fix: make registration keyboard handling web-safe"
+          MSG[fc65186]="fix: make login interactions web-safe"
+          MSG[515e7e4]="revert: restore Vercel SPA rewrite configuration"
+          MSG[db36a80]="chore: add calendar dependency and refresh app lockfile"
+          MSG[7b59b40]="docs: redesign README presentation and demo section"
+          MSG[ddbb9eb]="docs: add README branding assets"
+          MSG[ef5d78c]="docs: add final TNABBAH demo video"
+          MSG[5d59d42]="docs: add project demo source video"
+          MSG[cb3136b]="docs: update project site team visibility and release message"
+          MSG[55d0422]="feat: isolate chatbot history by user and session"
+          MSG[328583f]="feat: refine account settings wallet and notification flows"
+          MSG[5a01ae4]="fix: improve chatbot connection error messaging"
+          MSG[906c8b8]="fix: improve chatbot networking and mobile HTTP compatibility"
+          MSG[b86025e]="feat: add TNABBAH Panic Mode web game prototype"
+          MSG[c30cf3f]="refactor: reorganize home dashboard and notification layout"
+          MSG[ce2e26e]="feat: refine home diagnostics dashboard and floating assistant"
+          MSG[038a78c]="fix: resolve realtime provider merge conflicts"
+          MSG[51a8694]="feat: improve password recovery UI and realtime safety"
+          MSG[62bc712]="feat: add bilingual report translation and persisted English content"
+          MSG[48a0a79]="fix: render state-based OBD readings without numeric corruption"
+          MSG[ac14b8f]="fix: link diagnostic reports to the correct user vehicle"
+          MSG[a41ef39]="feat: add RTL-aware report layout and localized presentation"
+          MSG[f5c2865]="feat: split diagnostics report into AI analysis and vehicle readings tabs"
+          MSG[5163211]="feat: add dark-mode severity styling to diagnostic reports"
+          MSG[82c80e4]="refactor: decouple report storage from wallet and active car state"
+          MSG[137ed88]="fix: improve DTC reliability and MQTT telemetry delivery"
+          MSG[d0c516c]="feat: enhance home diagnostics summary and chatbot history"
+          MSG[3219e56]="privacy: mask team phone numbers on public project site"
+          MSG[814291e]="feat: synchronize active vehicle state across home reports and wallet"
+          MSG[4287e1]="fix: point web app links to deployed TNABBAH app"
+          MSG[1f6fed]="feat: update team contact details on project site"
+          MSG[348aba]="docs: expand team role descriptions on project site"
+          MSG[bb77c1]="chore: update local Live Server port"
+          MSG[3c58da]="feat: add LinkedIn contact option to team modal"
+          MSG[699f21]="feat: add LinkedIn profiles to team contact cards"
+          MSG[662dc3]="fix: relabel web CTA from game to app"
+          MSG[068dff]="fix: add password reset redirects for web and mobile"
+          MSG[16ea3e]="fix: support authentication redirects and password flows on web"
+          MSG[a59628]="fix: guard native connection handlers on web"
+          MSG[9794b7]="fix: make connection intro native dependencies web-safe"
+          MSG[f31a3f]="fix: add web-safe guards to OBD connection flow"
+          MSG[8764f4]="docs: update team member contact information"
+
+          for prefix in "${!MSG[@]}"; do
+            files=()
+            while IFS= read -r -d '' file; do
+              latest="$(git log -1 --format=%H -- "$file" || true)"
+              [[ "$latest" == "$prefix"* ]] || continue
+
+              # Only touch text files. Binary assets are intentionally left byte-for-byte unchanged.
+              if grep -Iq . "$file"; then
+                files+=("$file")
+              fi
+            done < <(git ls-files -z)
+
+            if ((${#files[@]} == 0)); then
+              continue
+            fi
+
+            for file in "${files[@]}"; do
+              printf '\n' >> "$file"
+            done
+
+            git add -- "${files[@]}"
+            git commit -m "${MSG[$prefix]}"
+          done
+
+          if [[ "$(git rev-parse HEAD)" != "${GITHUB_SHA}" ]]; then
+            git push origin HEAD:main
+          else
+            echo "No matching text files required normalization."
+          fi
