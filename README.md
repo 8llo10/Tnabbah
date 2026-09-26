@@ -20,10 +20,6 @@ Transforming complex vehicle diagnostics into clear, actionable insights for eve
   <img src="https://img.shields.io/badge/Watch%20Demo-YouTube-871B17?style=for-the-badge&logo=youtube&logoColor=white" alt="Watch Demo on YouTube" />
 </a>
 
-<a href="./Demo.mp4">
-  <img src="https://img.shields.io/badge/View%20Demo-GitHub-5F5F5F?style=for-the-badge&logo=github&logoColor=white" alt="View Demo on GitHub" />
-</a>
-
 <br /><br />
 
 <img src="https://img.shields.io/badge/React%20Native-Mobile%20App-871B17?style=flat-square" alt="React Native" />
@@ -46,15 +42,9 @@ Transforming complex vehicle diagnostics into clear, actionable insights for eve
   <img src="./assets/demo-cover.png" width="850" alt="TNABBAH Demo Video"/>
 </a>
 
-<br /><br />
-
-**Click the preview above to watch the full TNABBAH demonstration on YouTube.**
-
 <br />
 
-You can also view the repository-hosted demo:
-
-**[▶ Open Demo.mp4](./Demo.mp4)**
+**Click the image above to watch the full TNABBAH demonstration**
 
 </div>
 
@@ -62,27 +52,15 @@ You can also view the repository-hosted demo:
 
 ## About TNABBAH
 
-**TNABBAH** is a smart vehicle diagnostics platform that combines **OBD-II Bluetooth communication**, real-time monitoring, cloud infrastructure, and artificial intelligence to make vehicle diagnostics easier and more understandable for everyday drivers.
+**TNABBAH** is a smart vehicle diagnostics and maintenance platform that combines **OBD-II Bluetooth communication**, real-time vehicle monitoring, cloud infrastructure, and artificial intelligence to make automotive diagnostics easier to understand and more useful for everyday drivers.
 
-The platform connects directly to real vehicles through an **ELM327 BLE OBD-II adapter**, reads live vehicle data, retrieves diagnostic trouble codes, identifies vehicle information, monitors vehicle health, and transforms technical automotive data into clear reports and practical recommendations.
+The platform connects to real vehicles through an **ELM327 BLE OBD-II adapter**, reads live vehicle data, retrieves diagnostic trouble codes, identifies vehicle information, monitors vehicle health, and transforms technical automotive information into clear reports, maintenance guidance, and practical recommendations.
 
-Instead of presenting drivers with raw diagnostic codes and sensor values alone, TNABBAH explains what the detected issue means, why it matters, how it may affect the vehicle, and what action can be taken next.
+Instead of showing drivers raw diagnostic codes and sensor values alone, TNABBAH explains what a detected issue means, why it matters, how it may affect the vehicle, and what action can be taken next.
 
-The platform also provides an intelligent automotive assistant capable of using vehicle-specific context, diagnostic reports, and vehicle information to help drivers better understand their vehicle's condition.
+TNABBAH also provides an intelligent, vehicle-aware assistant that helps users understand their vehicle condition using diagnostic reports, vehicle information, maintenance data, and relevant vehicle context.
 
----
-
-## Platform Preview
-
-<div align="center">
-
-<img src="./Tnabbah_concon/assets/hero-light.png" width="850" alt="TNABBAH Platform Preview" />
-
-<br /><br />
-
-<img src="./Tnabbah_concon/assets/obd-light.png" width="850" alt="TNABBAH OBD-II Vehicle Diagnostics" />
-
-</div>
+The platform was designed as an integrated system connecting the physical vehicle to mobile software, real-time communication infrastructure, backend diagnostic services, cloud data services, and AI-assisted interpretation.
 
 ---
 
@@ -90,67 +68,23 @@ The platform also provides an intelligent automotive assistant capable of using 
 
 | Feature | Description |
 |---|---|
-| **Real-Time Monitoring** | Reads live vehicle data and continuously displays important vehicle metrics within the mobile application. |
-| **OBD-II Bluetooth Communication** | Connects directly to the vehicle through an ELM327 BLE OBD-II adapter. |
-| **Live OBD-II PID Processing** | Reads, decodes, and processes supported OBD-II parameters such as RPM, vehicle speed, temperatures, voltage, engine load, fuel information, and other supported vehicle readings. |
-| **Fault Code Detection** | Reads Diagnostic Trouble Codes (DTCs) and organizes them for analysis and interpretation. |
-| **Vehicle Identification** | Retrieves vehicle information such as VIN and Mode 09 data to associate diagnostic information with the correct vehicle. |
-| **AI Vehicle Health Analysis** | Converts technical diagnostics and vehicle readings into clear and understandable health insights. |
-| **Intelligent Assistant** | Allows drivers to ask questions and understand their vehicle condition using vehicle-specific context. |
-| **Arabic & English Reports** | Generates simplified diagnostic information and reports in both Arabic and English. |
-| **Smart Maintenance Wallet** | Organizes vehicle maintenance information and helps users keep track of maintenance-related records. |
-| **Maintenance Recommendations** | Provides maintenance guidance based on vehicle condition and diagnostic information. |
+| **Real-Time Monitoring** | Reads and monitors live vehicle data and displays important metrics directly in the mobile application. |
+| **OBD-II Bluetooth Communication** | Connects directly to real vehicles through an ELM327 BLE OBD-II adapter. |
+| **Live OBD-II PID Processing** | Reads and interprets supported OBD-II parameters including RPM, speed, temperatures, engine load, voltage, fuel-related readings, and other supported vehicle data. |
+| **Fault Code Detection** | Reads Diagnostic Trouble Codes (DTCs) and prepares them for diagnostic analysis and interpretation. |
+| **Vehicle Identification** | Retrieves vehicle information such as VIN and Mode 09 data to associate diagnostics with the correct vehicle. |
+| **AI Vehicle Health Analysis** | Converts technical diagnostic information and vehicle readings into clear and understandable insights. |
+| **Intelligent Assistant** | Allows drivers to ask questions and understand their vehicle condition through vehicle-aware conversational assistance. |
+| **Arabic & English Reports** | Provides simplified diagnostic information and reports in both Arabic and English. |
+| **Smart Maintenance Wallet** | Organizes vehicle maintenance information, records, recommendations, and related maintenance data. |
+| **Maintenance Recommendations** | Provides practical maintenance guidance based on vehicle condition and diagnostic information. |
 | **Maintenance Reminders** | Supports proactive maintenance tracking, scheduling, and reminders. |
-| **Notifications** | Provides application notifications for relevant vehicle and maintenance events. |
-| **Diagnostic History** | Maintains vehicle-specific diagnostic reports and historical information. |
-| **Multi-Vehicle Management** | Allows users to manage and monitor multiple vehicles while keeping their data separated. |
-| **MQTT Live Telemetry** | Streams real-time vehicle readings through MQTT-based infrastructure. |
-| **Cloud Synchronization** | Stores and synchronizes user, vehicle, report, maintenance, and application data using Supabase. |
-| **Vehicle-Specific Data Separation** | Separates telemetry, diagnostics, reports, maintenance records, and assistant context for each user and vehicle. |
-
----
-
-## Vehicle Diagnostics Flow
-
-```text
-Real Vehicle
-     │
-     ▼
-ELM327 BLE OBD-II Adapter
-     │
-     ▼
-Bluetooth Low Energy Communication
-     │
-     ▼
-TNABBAH Mobile Application
-     │
-     ├── Vehicle Identification / VIN
-     ├── Supported PID Discovery
-     ├── Live OBD-II Data
-     ├── Diagnostic Trouble Codes
-     └── Vehicle State
-     │
-     ▼
-MQTT Real-Time Telemetry
-     │
-     ▼
-Backend & Diagnostics Services
-     │
-     ├── Diagnostic Processing
-     ├── Vehicle Health Analysis
-     ├── Maintenance Logic
-     └── Intelligent Assistance
-     │
-     ▼
-Supabase / PostgreSQL
-     │
-     ├── Users
-     ├── Vehicles
-     ├── Reports
-     ├── Maintenance
-     ├── Notifications
-     └── Vehicle History
-```
+| **Notifications** | Delivers relevant application notifications related to vehicle and maintenance events. |
+| **Diagnostic History** | Maintains vehicle-specific diagnostic reports and historical information for later reference. |
+| **Multi-Vehicle Management** | Allows users to manage and monitor multiple vehicles from one account while keeping each vehicle's information separated. |
+| **MQTT Live Telemetry** | Streams real-time vehicle readings through MQTT-based infrastructure for continuous data communication. |
+| **Cloud Synchronization** | Stores and synchronizes user, vehicle, report, maintenance, and application data using Supabase and PostgreSQL. |
+| **Vehicle-Specific Data Management** | Separates telemetry, diagnostics, reports, maintenance records, and assistant context for each vehicle. |
 
 ---
 
@@ -244,94 +178,6 @@ Supabase Cloud Services
 
 ---
 
-## Real Vehicle Integration
-
-<div align="center">
-
-<img src="./Tnabbah_concon/assets/obd-dark.png" width="760" alt="TNABBAH Real Vehicle OBD-II Integration" />
-
-</div>
-
-TNABBAH was designed to communicate with **real vehicles**, not only simulated diagnostic data.
-
-The vehicle communication layer handles:
-
-- BLE device discovery and connection
-- ELM327 communication
-- OBD-II command execution
-- Supported PID discovery
-- Live sensor data retrieval
-- Diagnostic Trouble Code retrieval
-- VIN and Mode 09 information
-- Vehicle connection state
-- Real-time telemetry publishing
-- Vehicle-specific data routing
-
-This allows TNABBAH to bridge the gap between physical vehicle data and cloud-based diagnostic services.
-
----
-
-## Real-Time Telemetry
-
-TNABBAH uses **MQTT and Mosquitto** to move vehicle telemetry between the mobile application and backend services.
-
-Vehicle telemetry can include readings such as:
-
-- Engine RPM
-- Vehicle speed
-- Coolant temperature
-- Engine oil temperature
-- Control module voltage
-- Engine load
-- Fuel pressure
-- Fuel level
-- Intake air temperature
-- Air flow information
-- Throttle position
-- Supported OBD-II parameters
-- Diagnostic state
-- Vehicle connection status
-
-Telemetry is separated using user- and vehicle-specific context so multiple vehicles can be managed independently.
-
----
-
-## Intelligent Vehicle Assistance
-
-TNABBAH includes a vehicle-aware conversational assistant designed to make automotive information easier to understand.
-
-The assistant can work with:
-
-- Vehicle identity
-- Current vehicle
-- Diagnostic reports
-- Vehicle health information
-- Maintenance recommendations
-- Live vehicle context
-- User questions
-
-Instead of exposing raw diagnostic structures, the assistant focuses on producing clear, driver-friendly explanations in **Arabic or English**.
-
----
-
-## Smart Maintenance
-
-TNABBAH extends beyond diagnostics by helping drivers track and understand vehicle maintenance.
-
-The platform supports:
-
-- Maintenance tracking
-- Smart Maintenance Wallet
-- Maintenance reminders
-- Maintenance recommendations
-- Vehicle-specific maintenance records
-- Notifications
-- Multi-vehicle maintenance separation
-
-This allows diagnostic information to become part of a longer-term vehicle maintenance workflow instead of remaining as a one-time fault scan.
-
----
-
 ## Project Objectives
 
 TNABBAH was developed to:
@@ -363,27 +209,9 @@ TNABBAH brings **real-time diagnostics**, **AI analysis**, **conversational assi
 
 Instead of presenting only technical OBD-II values or raw fault codes, TNABBAH focuses on transforming vehicle data into information that drivers can actually understand and use.
 
-The platform explains what a detected issue means, why it matters, and what action the driver can take next.
+The platform explains what a detected issue means, why it matters, how serious it may be, and what action the driver can take next.
 
-The system was also validated using **physical ELM327 hardware and real vehicles**, allowing the project to test actual Bluetooth communication, OBD-II responses, vehicle telemetry, fault detection, and diagnostic workflows rather than relying only on simulated data.
-
----
-
-## Project Visuals
-
-<div align="center">
-
-<img src="./Tnabbah_concon/assets/abstract-light.png" width="850" alt="TNABBAH Project Visual" />
-
-<br /><br />
-
-<img src="./Tnabbah_concon/assets/logo-word.png" width="420" alt="TNABBAH Wordmark" />
-
-<br /><br />
-
-<img src="./Tnabbah_concon/assets/logo-ar.png" width="420" alt="TNABBAH Arabic Logo" />
-
-</div>
+The system was also validated using **physical ELM327 hardware and real vehicles**, allowing the project to test actual Bluetooth communication, OBD-II responses, live vehicle telemetry, fault detection, and diagnostic workflows rather than relying only on simulated data.
 
 ---
 
@@ -398,7 +226,6 @@ This repository contains the public version of the **TNABBAH graduation project*
 - Diagnostic processing components
 - Cloud and Supabase integrations
 - Project documentation
-- Demonstration media
 - Selected project resources
 
 Some production infrastructure and sensitive configuration are intentionally excluded from the public repository, including:
