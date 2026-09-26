@@ -6,8 +6,6 @@
 
 <!-- <img src="./assets/logo.png" width="170" alt="TNABBAH Logo"/> -->
 
-# TNABBAH — تنبَّه
-
 <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=30&pause=900&color=871B17&center=true&vCenter=true&width=950&height=75&lines=AI-Powered+Vehicle+Diagnostics;OBD-II+Bluetooth+%2B+AI;Real-Time+Vehicle+Monitoring;From+Fault+Codes+to+Clear+Decisions;Smart+Insights+for+Everyday+Drivers" alt="Typing Animation" />
 
 **AI-Powered Vehicle Diagnostics & Intelligent Assistance Platform**
