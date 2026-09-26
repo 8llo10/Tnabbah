@@ -1426,3 +1426,4 @@ function createStyles(COLORS: AppColors, isArabic: boolean) {
   });
 
 }
+
