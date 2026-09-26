@@ -39,7 +39,7 @@ export const APP_COLORS = {
     tabBarBackground: "#202020",
     tabInactive: "#C7C7C7",
 
-    // لون أحمر أوضح في الدارك مود ويطابق هوية بوكس الحساب في الإعدادات
+    // Use a brighter burgundy accent in dark mode to preserve brand contrast.
     accent: "#D64A43",
     accentPressed: "#B73A34",
     accentShadow: "rgba(214,74,67,0.34)",
@@ -58,8 +58,7 @@ export function useAppTheme() {
   );
 }
 
-// وجود هذا المكوّن اختياري، فقط عشان لو حبيتي تلفين التطبيق باسم ThemeProvider.
-// الألوان نفسها تُقرأ من useAppTheme مباشرة.
+// Optional wrapper for components that prefer a ThemeProvider-style API.
 export function ThemeProvider({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
