@@ -1,0 +1,109 @@
+nohup: ignoring input
+INFO:src.diagnostics.main:CORS configured: origins=['*'], allow_credentials=False
+WARNING:src.diagnostics.main:⚠️  Web UI directory not found at /opt/tnabbah/Tnabbah_Diagnostics/web — serving JSON root only.
+INFO:     Started server process [70011]
+INFO:     Waiting for application startup.
+INFO:src.diagnostics.main:============================================================
+INFO:src.diagnostics.main:تَنَبَّه diagnostics — Startup
+INFO:src.diagnostics.main:============================================================
+INFO:src.diagnostics.data_loader:DataLoader initialized with base path: /opt/tnabbah/Tnabbah_Diagnostics/data
+INFO:src.diagnostics.data_loader:✅ Loaded dtc_knowledge_base.json
+INFO:src.diagnostics.data_loader:✅ Loaded pid_knowledge_base.json
+INFO:src.diagnostics.data_loader:📚 Knowledge Bases Loaded (schema v2):
+INFO:src.diagnostics.data_loader:   - DTCs: 144 codes
+INFO:src.diagnostics.data_loader:   - PIDs: 135 parameters
+INFO:src.diagnostics.data_loader:📚 Learning state initialized with 120 PIDs
+INFO:src.diagnostics.engine.pid_analyzer:📊 PID Analyzer initialized
+INFO:src.diagnostics.engine.rules_engine:🔧 RulesEngine initialized with PIDAnalyzer
+INFO:src.diagnostics.mqtt_listener:📡 MQTT listener connecting to ws://207.180.244.27:9001 (207.180.244.27:9001)
+INFO:src.diagnostics.main:✅ All systems initialized successfully
+INFO:src.diagnostics.main:   - DataLoader: ✅
+INFO:src.diagnostics.main:   - RulesEngine: ✅
+INFO:src.diagnostics.main:   - LearningState: ✅
+INFO:src.diagnostics.main:   - MQTT listener: ✅
+INFO:src.diagnostics.main:============================================================
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:src.diagnostics.mqtt_listener:✅ MQTT listener connected
+INFO:     127.0.0.1:41936 - "GET /api/health HTTP/1.1" 200 OK
+INFO:src.diagnostics.main:📊 Starting scan analysis (ID: 16a1ecd1)
+INFO:src.diagnostics.main:   PIDs: 34
+INFO:src.diagnostics.main:   DTCs: 1
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x41 - Skipping (use standardized codes like 0x0C)
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x8E - Skipping (use standardized codes like 0x0C)
+INFO:src.diagnostics.engine.rules_engine:✅ PID Analysis Complete:
+INFO:src.diagnostics.engine.rules_engine:   - Analyzed PIDs: 34
+INFO:src.diagnostics.engine.rules_engine:   - Anomalies detected (from PIDs): 5
+INFO:src.diagnostics.engine.rules_engine:   - System scores: {'ENGINE': 75.0, 'COOLING': 0.0, 'ELECTRICAL': 0.0, 'FUEL': 30.0, 'AIR': 20.0, 'EXHAUST': 30.0, 'DRIVETRAIN': 0.0}
+INFO:src.diagnostics.engine.rules_engine:   - Overall health: 80.0%
+INFO:src.diagnostics.engine.rules_engine:   ✅ DTC P0301 (HIGH) converted to anomaly - value: 0
+INFO:src.diagnostics.engine.rules_engine:   - Total anomalies (after adding DTCs): 6
+INFO:src.diagnostics.engine.rules_engine:✅ Identified 5 likely causes
+INFO:src.diagnostics.engine.rules_engine:✅ Generated 1 DIY checklist items
+INFO:src.diagnostics.ai_service:✅ DeepSeek AI ready
+INFO:src.diagnostics.main:✅ Scan completed successfully
+INFO:src.diagnostics.main:   Severity: SeverityLevel.HIGH
+INFO:src.diagnostics.main:   Anomalies: 6
+INFO:src.diagnostics.main:   Causes: 5
+INFO:     37.105.146.156:37388 - "POST /api/scan-from-mqtt HTTP/1.1" 200 OK
+INFO:src.diagnostics.main:📊 Starting scan analysis (ID: 54dca90c)
+INFO:src.diagnostics.main:   PIDs: 33
+INFO:src.diagnostics.main:   DTCs: 1
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x41 - Skipping (use standardized codes like 0x0C)
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x8E - Skipping (use standardized codes like 0x0C)
+INFO:src.diagnostics.engine.rules_engine:✅ PID Analysis Complete:
+INFO:src.diagnostics.engine.rules_engine:   - Analyzed PIDs: 33
+INFO:src.diagnostics.engine.rules_engine:   - Anomalies detected (from PIDs): 5
+INFO:src.diagnostics.engine.rules_engine:   - System scores: {'ENGINE': 30.0, 'COOLING': 0.0, 'ELECTRICAL': 0.0, 'FUEL': 30.0, 'AIR': 20.0, 'EXHAUST': 30.0, 'DRIVETRAIN': 0.0}
+INFO:src.diagnostics.engine.rules_engine:   - Overall health: 90.0%
+INFO:src.diagnostics.engine.rules_engine:   - Total anomalies (after adding DTCs): 5
+INFO:src.diagnostics.engine.rules_engine:✅ Identified 0 likely causes
+INFO:src.diagnostics.engine.rules_engine:✅ Generated 1 DIY checklist items
+WARNING:src.diagnostics.formatters.dtc_formatter:Missing KB entry for DTC P0104 — using defaults
+INFO:src.diagnostics.main:✅ Scan completed successfully
+INFO:src.diagnostics.main:   Severity: SeverityLevel.MEDIUM
+INFO:src.diagnostics.main:   Anomalies: 5
+INFO:src.diagnostics.main:   Causes: 0
+INFO:     37.105.146.156:43572 - "POST /api/scan-from-mqtt HTTP/1.1" 200 OK
+INFO:     65.49.1.192:7762 - "GET / HTTP/1.1" 200 OK
+INFO:     65.49.1.199:10737 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     65.49.1.196:49173 - "GET http%3A//api.ipify.org/?format=json HTTP/1.1" 404 Not Found
+INFO:     65.49.1.193:44313 - "CONNECT www.shadowserver.org%3A443 HTTP/1.1" 404 Not Found
+INFO:src.diagnostics.main:📊 Starting scan analysis (ID: 8161d8ca)
+INFO:src.diagnostics.main:   PIDs: 33
+INFO:src.diagnostics.main:   DTCs: 1
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x41 - Skipping (use standardized codes like 0x0C)
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x8E - Skipping (use standardized codes like 0x0C)
+INFO:src.diagnostics.engine.rules_engine:✅ PID Analysis Complete:
+INFO:src.diagnostics.engine.rules_engine:   - Analyzed PIDs: 33
+INFO:src.diagnostics.engine.rules_engine:   - Anomalies detected (from PIDs): 5
+INFO:src.diagnostics.engine.rules_engine:   - System scores: {'ENGINE': 30.0, 'COOLING': 0.0, 'ELECTRICAL': 0.0, 'FUEL': 30.0, 'AIR': 20.0, 'EXHAUST': 30.0, 'DRIVETRAIN': 0.0}
+INFO:src.diagnostics.engine.rules_engine:   - Overall health: 90.0%
+INFO:src.diagnostics.engine.rules_engine:   - Total anomalies (after adding DTCs): 5
+INFO:src.diagnostics.engine.rules_engine:✅ Identified 0 likely causes
+INFO:src.diagnostics.engine.rules_engine:✅ Generated 1 DIY checklist items
+WARNING:src.diagnostics.formatters.dtc_formatter:Missing KB entry for DTC P0104 — using defaults
+INFO:src.diagnostics.main:✅ Scan completed successfully
+INFO:src.diagnostics.main:   Severity: SeverityLevel.MEDIUM
+INFO:src.diagnostics.main:   Anomalies: 5
+INFO:src.diagnostics.main:   Causes: 0
+INFO:     37.105.146.156:45994 - "POST /api/scan-from-mqtt HTTP/1.1" 200 OK
+INFO:src.diagnostics.main:📊 Starting scan analysis (ID: 705208c5)
+INFO:src.diagnostics.main:   PIDs: 33
+INFO:src.diagnostics.main:   DTCs: 1
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x41 - Skipping (use standardized codes like 0x0C)
+WARNING:src.diagnostics.engine.rules_engine:⚠️ Unknown PID code: 0x8E - Skipping (use standardized codes like 0x0C)
+INFO:src.diagnostics.engine.rules_engine:✅ PID Analysis Complete:
+INFO:src.diagnostics.engine.rules_engine:   - Analyzed PIDs: 33
+INFO:src.diagnostics.engine.rules_engine:   - Anomalies detected (from PIDs): 5
+INFO:src.diagnostics.engine.rules_engine:   - System scores: {'ENGINE': 30.0, 'COOLING': 0.0, 'ELECTRICAL': 0.0, 'FUEL': 30.0, 'AIR': 20.0, 'EXHAUST': 30.0, 'DRIVETRAIN': 0.0}
+INFO:src.diagnostics.engine.rules_engine:   - Overall health: 90.0%
+INFO:src.diagnostics.engine.rules_engine:   - Total anomalies (after adding DTCs): 5
+INFO:src.diagnostics.engine.rules_engine:✅ Identified 0 likely causes
+INFO:src.diagnostics.engine.rules_engine:✅ Generated 1 DIY checklist items
+WARNING:src.diagnostics.formatters.dtc_formatter:Missing KB entry for DTC P0104 — using defaults
+INFO:src.diagnostics.main:✅ Scan completed successfully
+INFO:src.diagnostics.main:   Severity: SeverityLevel.MEDIUM
+INFO:src.diagnostics.main:   Anomalies: 5
+INFO:src.diagnostics.main:   Causes: 0
+INFO:     37.105.146.156:39362 - "POST /api/scan-from-mqtt HTTP/1.1" 200 OK
